@@ -1,5 +1,5 @@
 # [Funnel Activation for Visual Recognition]()
-This repository provides MegEngine implementation for "Funnel Activation for Visual Recognition".
+This repository provides MegEngine implementation for "[Funnel Activation for Visual Recognition](https://arxiv.org/pdf/2007.11824.pdf)".
 
 <!-- ![introduce image](image/frelu.png) -->
 <img width="869" height="444" src="figures/frelu.png"/>
