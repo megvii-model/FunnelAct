@@ -16,7 +16,7 @@ import megengine.functional as F
 import megengine.jit as jit
 import numpy as np
 
-import model as M
+import shufflenet_v2 as M
 
 
 def main():
@@ -32,7 +32,7 @@ def main():
         model.load_state_dict(state_dict)
 
     if args.image is None:
-        path = "../../../assets/cat.jpg"
+        path = "../../../assets/cat.jpg" # please find the files in https://github.com/MegEngine/Models/tree/master/official/assets
     else:
         path = args.image
     image = cv2.imread(path, cv2.IMREAD_COLOR)
@@ -60,7 +60,7 @@ def main():
 
     top_probs, classes = F.top_k(probs, k=5, descending=True)
 
-    with open("../../../assets/imagenet_class_info.json") as fp:
+    with open("../../../assets/imagenet_class_info.json") as fp: # please find the files in https://github.com/MegEngine/Models/tree/master/official/assets
         imagenet_class_index = json.load(fp)
 
     for rank, (prob, classid) in enumerate(
