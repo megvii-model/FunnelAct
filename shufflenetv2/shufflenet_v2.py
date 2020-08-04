@@ -198,22 +198,8 @@ class ShuffleNetV2(M.Module):
                     M.init.fill_(m.bias, 0)
 
 
-@hub.pretrained("https://data.megengine.org.cn/models/weights/snetv2_x2_0_75115_497d4601.pkl")
-def shufflenet_v2_x2_0(num_classes=1000):
-    return ShuffleNetV2(num_classes=num_classes, model_size="2.0x")
 
-
-@hub.pretrained("https://data.megengine.org.cn/models/weights/snetv2_x1_5_72775_38ac4273.pkl")
-def shufflenet_v2_x1_5(num_classes=1000):
-    return ShuffleNetV2(num_classes=num_classes, model_size="1.5x")
-
-
-@hub.pretrained("https://data.megengine.org.cn/models/weights/snetv2_x1_0_69369_daf9dba0.pkl")
-def shufflenet_v2_x1_0(num_classes=1000):
-    return ShuffleNetV2(num_classes=num_classes, model_size="1.0x")
-
-
-@hub.pretrained("https://data.megengine.org.cn/models/weights/snetv2_x0_5_60750_c28db1a2.pkl")
+@hub.pretrained("https://data.megengine.org.cn/models/weights/frelu/shufflenetv2_0.5x.model")
 def shufflenet_v2_x0_5(num_classes=1000):
     return ShuffleNetV2(num_classes=num_classes, model_size="0.5x")
 
