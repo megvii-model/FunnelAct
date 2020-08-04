@@ -24,7 +24,7 @@ logger = mge.get_logger(__name__)
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-a", "--arch", default="shufflenet_v2_x1_0", type=str)
+    parser.add_argument("-a", "--arch", default="shufflenet_v2_x0_5", type=str)
     parser.add_argument("-d", "--data", default=None, type=str)
     parser.add_argument("-m", "--model", default=None, type=str)
 
