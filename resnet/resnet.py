@@ -330,7 +330,7 @@ def resnet50(**kwargs):
     """
     return ResNet(Bottleneck, [3, 4, 6, 3], **kwargs)
 
-@hub.pretrained("https://data.megengine.org.cn/models/weights/resnet50_fbaug_76254_4e14b7d1.pkl")
+@hub.pretrained("https://data.megengine.org.cn/models/weights/frelu/res50_frelu.model")
 def resnet50_frelu(**kwargs):
     r"""ResNet-50 model from
     `"Deep Residual Learning for Image Recognition" <https://arxiv.org/pdf/1512.03385.pdf>`_
