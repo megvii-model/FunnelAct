@@ -21,7 +21,7 @@ import shufflenet_v2 as M
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-a", "--arch", default="shufflenet_v2_x1_0", type=str)
+    parser.add_argument("-a", "--arch", default="shufflenet_v2_x0_5", type=str)
     parser.add_argument("-m", "--model", default=None, type=str)
     parser.add_argument("-i", "--image", default=None, type=str)
     args = parser.parse_args()
