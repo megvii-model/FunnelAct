@@ -83,7 +83,59 @@ class BasicBlock(M.Module):
         x = F.relu(x)
         return x
 
+class Bottleneck_FReLU_Partial(M.Module):
+    r""" We note that the modern CNN structures are finely designed with the ReLU activation, 
+    therefore applying FReLU to the ReLU networks is flexible: you can replace all ReLU with 
+    FReLU, you can also replace some of them. Finding an optimum replacement can further 
+    improve the performance but beyond the focus of this work. 
+    
+    Here we give another example which only replace one ReLU with FReLU in the bottleneck.
+    """
+    
+    expansion = 4
 
+    def __init__(
+        self, in_channels, channels, stride=1, groups=1, base_width=64, dilation=1, norm=M.BatchNorm2d,
+    ):
+        super(Bottleneck_FReLU_Partial, self).__init__()
+        width = int(channels * (base_width / 64.0)) * groups
+        self.conv1 = M.Conv2d(in_channels, width, 1, stride, bias=True)
+        self.bn1 = norm(width)
+        self.conv2 = M.Conv2d(width, width, 3, 1, padding=dilation, groups=groups, dilation=dilation, bias=True,)
+        self.bn2 = norm(width)
+        self.frelu = FReLU(width)
+        self.conv3 = M.Conv2d(width, channels * self.expansion, 1, 1, bias=True)
+        self.bn3 = norm(channels * self.expansion)
+        self.downsample = (
+            M.Identity()
+            if in_channels == channels * self.expansion and stride == 1
+            else M.Sequential(
+                M.Conv2d(in_channels, channels * self.expansion, 1, stride, bias=True),
+                norm(channels * self.expansion),
+            )
+        )
+
+    def forward(self, x):
+        identity = x
+
+        x = self.conv1(x)
+        x = self.bn1(x)
+        x = F.relu(x)
+
+        x = self.conv2(x)
+        x = self.bn2(x)
+        x = self.frelu(x)
+
+        x = self.conv3(x)
+        x = self.bn3(x)
+
+        identity = self.downsample(identity)
+
+        x += identity
+        x = F.relu(x)
+
+        return x
+    
 class Bottleneck_FReLU(M.Module):
     expansion = 4
 
