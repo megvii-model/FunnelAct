@@ -184,9 +184,6 @@ def worker(rank, world_size, args):
                 T.RandomResizedCrop(224),
                 T.RandomHorizontalFlip(),
                 T.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4),
-                T.Normalize(
-                    mean=[103.530, 116.280, 123.675], std=[57.375, 57.120, 58.395]
-                ),  # BGR
                 T.ToMode("CHW"),
             ]
         ),
@@ -204,9 +201,6 @@ def worker(rank, world_size, args):
             [
                 T.Resize(256),
                 T.CenterCrop(224),
-                T.Normalize(
-                    mean=[103.530, 116.280, 123.675], std=[57.375, 57.120, 58.395]
-                ),  # BGR
                 T.ToMode("CHW"),
             ]
         ),

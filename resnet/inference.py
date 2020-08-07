@@ -41,9 +41,6 @@ def main():
         [
             T.Resize(256),
             T.CenterCrop(224),
-            T.Normalize(
-                mean=[103.530, 116.280, 123.675], std=[57.375, 57.120, 58.395]
-            ),  # BGR
             T.ToMode("CHW"),
         ]
     )
