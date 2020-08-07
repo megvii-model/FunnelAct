@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(0, "resnet")
+sys.path.insert(0, "shufflenetv2")
+
 from resnet.resnet import (
     BasicBlock,
     Bottleneck,
