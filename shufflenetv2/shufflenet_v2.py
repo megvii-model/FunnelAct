@@ -37,7 +37,7 @@ import megengine.functional as F
 import megengine.hub as hub
 import megengine.module as M
 
-from frelu import FReLU
+from frelu_light import FReLU
 
 
 class ShuffleV2Block(M.Module):
