@@ -42,7 +42,7 @@ Inference:
 ## Results
 
 <!-- ![introduce image](image/frelu_result.png) -->
-<img width="473" height="263" src="figures/frelu_result.png"/>
+<img width="709" height="394" src="figures/frelu_result.png"/>
 
 - Comparison on ImageNet dataset:
 
